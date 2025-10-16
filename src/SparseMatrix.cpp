@@ -62,5 +62,12 @@ SparseMatrix*::multiply(SparseMatrix* second){
 }
 
 SparseMatrix::~SparseMatrix(){
+    Node* actual = start;
 
+    while (actual != nullptr){
+        Node* eliminar = actual;
+        actual = actual -> siguiente;
+        delete eliminar;
+    }
+    
 }
