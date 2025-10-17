@@ -87,7 +87,34 @@ void SparseMatrix::printStoredValues(){
 }
 
 int SparseMatrix::density(){
-    
+        if(start == nullptr){
+        return 0;
+    }
+
+    int cantDistinto0 = 0;
+
+    Node* actual = start;
+
+    int maxPosX = -1;
+    int maxPosY = -1;
+
+    while (actual != nullptr){
+        if(actual -> posX > maxPosX){
+            maxPosX = actual -> posX;
+        }
+        if(actual -> posY > maxPosY){
+            maxPosY = actual -> posY;
+        }
+
+        cantDistinto0++;
+
+        actual = actual -> siguiente;
+    }
+
+    int totalCeldas = (maxPosX + 1) * (maxPosY + 1);
+    int porcentajeDensidad =  cantDistinto0 * 100 / totalCeldas;
+
+    return porcentajeDensidad;
 }
 
 SparseMatrix*::multiply(SparseMatrix* second){
