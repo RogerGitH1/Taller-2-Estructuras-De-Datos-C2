@@ -1,4 +1,5 @@
 #include <SparseMatrix.h>
+#include <iostream>
 
 SparseMatrix::SparseMatrix() {
     start = nullptr;
@@ -50,7 +51,16 @@ void SparseMatrix::remove(int xPos, int yPos){
 }
 
 void SparseMatrix::printStoredValues(){
-    
+    if(start == nullptr){
+        return;
+    }
+
+    Node* actual = start;
+
+    while (actual != nullptr){
+        std::cout << "(" << actual -> posX << ", " << actual -> posY << ") --> " << actual -> valor << std::endl;
+        actual = actual -> siguiente;
+    }
 }
 
 int SparseMatrix::density(){
