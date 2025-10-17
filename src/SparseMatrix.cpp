@@ -1,4 +1,4 @@
-#include <SparseMatrix.h>
+#include "SparseMatrix.h"
 #include <iostream>
 
 SparseMatrix::SparseMatrix() {
@@ -117,7 +117,7 @@ int SparseMatrix::density(){
     return porcentajeDensidad;
 }
 
-SparseMatrix*::multiply(SparseMatrix* second){
+SparseMatrix* SparseMatrix::multiply(SparseMatrix* second){
     
 }
 
