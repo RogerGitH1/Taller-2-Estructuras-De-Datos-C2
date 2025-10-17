@@ -42,12 +42,35 @@ void SparseMatrix::add(int value, int xPos, int yPos){
     }
 }
 
-int get(int xPos, int yPos){
+int SparseMatrix::get(int xPos, int yPos){
     
 }
 
 void SparseMatrix::remove(int xPos, int yPos){
-    
+    if(start == nullptr){
+        return;
+    }
+
+    Node* ant = nullptr;
+    Node* actual = start;
+
+    while (actual != nullptr){
+        if(actual -> posX == xPos && actual -> posY == yPos){
+            Node* eliminar = actual;
+
+            if(ant == nullptr){
+                start = start -> siguiente;
+            }
+            else{
+                ant -> siguiente = actual -> siguiente;
+            }
+            delete eliminar;
+            return;
+        }
+        ant = actual;
+        actual = actual -> siguiente;
+    }
+    return;
 }
 
 void SparseMatrix::printStoredValues(){
