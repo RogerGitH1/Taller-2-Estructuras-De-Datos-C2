@@ -131,7 +131,40 @@ int SparseMatrix::density(){
 }
 
 SparseMatrix* SparseMatrix::multiply(SparseMatrix* second){
-    
+    SparseMatrix* resultado = new SparseMatrix();
+
+    Node* actual1 = start;
+    while (actual1 != nullptr){
+        int x = actual1 -> posX;
+        int y = actual1 -> posY;
+
+        Node* actual2 = second -> start;  
+
+        while (actual2 != nullptr){
+            if (actual2 -> posX == y) {
+                int k = actual2 -> posY;
+                int valor1 = actual1 -> valor;
+                int valor2 = actual2 -> valor;
+
+                int multiplicacion = valor1 * valor2;
+
+                if (multiplicacion != 0) {
+                    int valorExistente = resultado -> get(x, k);
+                    int nuevoValor = valorExistente + multiplicacion;
+
+                    if (nuevoValor != 0){
+                        resultado -> add(nuevoValor, x, k);
+                    }
+                    else{
+                        resultado -> remove(x, k);
+                    }
+                }
+            }
+            actual2 = actual2 -> siguiente;
+        }
+        actual1 = actual1 -> siguiente;
+    }
+    return resultado;
 }
 
 SparseMatrix::~SparseMatrix(){
