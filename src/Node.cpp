@@ -6,3 +6,5 @@ Node::Node(int valor, int posX, int posY){
     this -> posY = posY;
     siguiente = nullptr;
 }
+
+Node::~Node(){}

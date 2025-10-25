@@ -8,4 +8,5 @@ class Node{
         Node* siguiente;
 
         Node(int valor, int posX, int posY);
+        ~Node();
 };
